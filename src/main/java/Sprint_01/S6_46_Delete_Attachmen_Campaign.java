@@ -1,22 +1,15 @@
 package Sprint_01;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 
 @Test
-public class S6_46_Delete_Attachmen_Campaign extends BaseClass_Parikshit {
+public class S6_46_Delete_Attachmen_Campaign extends TestBase{
 
 	public void editCampaign() throws InterruptedException, MalformedURLException {
 
@@ -29,14 +22,14 @@ public class S6_46_Delete_Attachmen_Campaign extends BaseClass_Parikshit {
 //		 ChromeOptions chromeOptions = new ChromeOptions();
 //		 chromeOptions.addArguments("--disable-notifications");
 //		 ChromeDriver driver = new ChromeDriver(chromeOptions);
-		driver.get("https://login.salesforce.com/");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		driver.manage().window().maximize();
-
-		// Step 1: Login to Login | Salesforce
-		driver.findElement(By.id("username")).sendKeys("gokul.sekar@testleaf.com");
-		driver.findElement(By.id("password")).sendKeys("Leaf$321");
-		driver.findElement(By.id("Login")).click();
+//		driver.get("https://login.salesforce.com/");
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+//		driver.manage().window().maximize();
+//
+//		// Step 1: Login to Login | Salesforce
+//		driver.findElement(By.id("username")).sendKeys("gokul.sekar@testleaf.com");
+//		driver.findElement(By.id("password")).sendKeys("Leaf$321");
+//		driver.findElement(By.id("Login")).click();
 
 		// Click on toggle menu button from the left corner
 		Thread.sleep(3000);

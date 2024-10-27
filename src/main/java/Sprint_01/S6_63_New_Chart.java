@@ -4,8 +4,6 @@ import java.net.MalformedURLException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -28,7 +26,7 @@ public class S6_63_New_Chart {
 
 		// Step 1: Login to Login | Salesforce
 		driver.findElement(By.id("username")).sendKeys("gokul.sekar@testleaf.com");
-		driver.findElement(By.id("password")).sendKeys("Leaf$321");
+		driver.findElement(By.id("password")).sendKeys("Leaf@123");
 		driver.findElement(By.id("Login")).click();
 
 		// Click on toggle menu button from the left corner
@@ -105,73 +103,40 @@ public class S6_63_New_Chart {
 		WebElement cmpl = driver.findElement(By.xpath("//a[text()='Completed']"));
 		ac.moveToElement(cmpl).click().perform();
 		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		WebElement pie = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='eclairChartWrapper pie']")));
+		Thread.sleep(2000);
 
-		// Scroll the pie chart element into view
-		driver.executeScript("arguments[0].scrollIntoView(true);", pie);
-
-		// Move to the top-left corner of the element first
-		ac.moveToElement(pie, 0, 0).perform(); // Move to the top-left corner
-
-		// Optional: Wait to visualize
-		Thread.sleep(3000); // Adjust as needed
-
-		// Move to the specific coordinates (1258, 478)
-		ac.moveToElement(pie,1258, 478).perform(); // Adjust for any offsets if needed
-		ac.moveToLocation(1258, 478).perform();
-
-		// Optional: Wait to visualize
-		Thread.sleep(500); // Adjust as needed
-
-		// Click the element (if needed)
-		ac.click().perform(); // Click the element
-		
-		
-		/* APPROACH 1
-		Thread.sleep(3000);
-		WebElement pie = driver.findElement(By.xpath("//div[@class='eclairChartWrapper pie']"));
-		
-		Point location = pie.getLocation();
-		System.out.println("Element Position: " + location);
-		Thread.sleep(3000);
-		ac.moveToElement(pie, 0, 0).perform();
-		Thread.sleep(3000);
-		ac.moveToElement(pie).click().perform();
-		ac.moveByOffset(0,-15).perform();
-		*/
-		//===APPROACH 2=====//
-	/*
-		// Wait for the pie element to be present
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		WebElement pie1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='eclairChartWrapper pie']")));
-
-		ac.moveToElement(pie1, 0, 0).perform();
-		
-		driver.executeScript("arguments[0].scrollIntoView(true);", pie1);
-		// Get the element's location and size
-		Point location1 = pie1.getLocation();
-		Dimension size = pie1.getSize();
-
-		// Calculate the center coordinates
-		int centerX = location1.getX() + (size.getWidth() / 2);
-		int centerY = location1.getY() + (size.getHeight() / 2);
-
-		// Move to the center of the element
-		
-		ac.moveToElement(pie1, centerX, centerY).perform(); // Move to the center
-
-		// Optional: Wait a moment to visualize the movement
-		Thread.sleep(500); // Adjust as needed
-
-		// Move slightly to the right (e.g., 10 pixels)
-		ac.moveByOffset(10, 0).perform(); // Move right by 10 pixels
-
-		// Click the element (if needed, can click after moving)
-		ac.click().perform(); // Click the element
-		
-		*/
+		WebElement canvasEle = driver.findElement(By.xpath("//h2[text()='Charts']"));
+		Actions action = new Actions(driver);
+		action.moveToLocation(1300, 400).pause(2000).click().perform();
 		
 
+		String status = driver.findElement(By.xpath("//label[text()='Status']//following-sibling::label")).getText();
+		String priorityconut = driver.findElement(By.xpath("//tbody//tr//td[@class='valueCell ']")).getText();
+		
+        System.out.println("Status:"+status);
+        System.out.println("Priority Count:"+priorityconut);
+        
+		WebElement sav = driver.findElement(By.xpath("//span[text()='Save']"));
+		ac.moveToElement(sav).click().perform();
+
+		WebElement refresh = driver.findElement(By.xpath("//button[@name='refreshButton']"));
+		ac.moveToElement(refresh).click().perform();
+        
+          
+//     
+//        WebElement inprg = driver.findElement(By.xpath("//div[text()='In Progress']//following::button[@title='Edit Status: Item In Progress']"));
+//		ac.moveToElement(inprg).click().perform();
+//		
+//		
+
+//		Thread.sleep(2000);
+//		
+//		WebElement prgval = driver.findElement(By.xpath("//a[text()='In Progress']"));
+//		ac.moveToElement(prgval).click().perform();
+//		WebElement CmplVal = driver.findElement(By.xpath("//a[text()='Completed']"));
+//		ac.moveToElement(CmplVal).click().perform();
+		
+
+		
 	}
 }
