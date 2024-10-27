@@ -1,22 +1,10 @@
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.0.0-M5</version>
-            <configuration>
-                <suiteXmlFiles>
-                    <suiteXmlFile>src/test/resources/suite.xml</suiteXmlFile> <!-- Path to your TestNG XML file -->
-                </suiteXmlFiles>
-            </configuration>
-            <executions>
-                <execution>
-                    <id>test</id>
-                    <goals>
-                        <goal>test</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-    </plugins>
-</build>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+	 <classes>
+            <class name="Sprint_01.S6_85_Post_Deleted"/>
+            <class name="Sprint_01.S6_84_SalesForce_Classic_NewAcc"/>
+        </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
